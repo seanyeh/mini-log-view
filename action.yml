@@ -1,0 +1,24 @@
+name: 'Mini Log View Generator'
+description: 'Generate a static HTML log viewer from JSONL files'
+author: 'sean'
+
+inputs:
+  log-directory:
+    description: 'Directory containing JSONL log files'
+    required: true
+  output-directory:
+    description: 'Directory to output the generated HTML site'
+    required: false
+    default: './dist'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Generate static log viewer
+      shell: bash
+      run: |
+        ${{ github.action_path }}/scripts/generate.sh "${{ inputs.log-directory }}" "${{ inputs.output-directory }}"
+
+branding:
+  icon: 'file-text'
+  color: 'blue'

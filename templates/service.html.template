@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$SERVICE_NAME - Mini Log View</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar">
+    $SERVICE_TABS
+  </div>
+  <div class="log-container" id="log-container">
+    $LOG_ENTRIES
+  </div>
+  <script>
+    // Auto-scroll to bottom
+    document.getElementById('log-container').scrollTop = document.getElementById('log-container').scrollHeight;
+  </script>
+</body>
+</html>
