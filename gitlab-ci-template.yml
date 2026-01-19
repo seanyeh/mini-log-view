@@ -1,0 +1,25 @@
+# Mini Log View Generator - GitLab CI Template
+#
+# Usage:
+#   include:
+#     - remote: 'https://raw.githubusercontent.com/seanyeh/mini-log-view/main/gitlab-ci-template.yml'
+#
+#   your-job-name:
+#     extends: .build-site
+#     variables:
+#       LOG_DIRECTORY: "./logs"
+#
+# Variables:
+#   LOG_DIRECTORY (optional): Directory containing JSONL log files (default: .)
+
+.build-site:
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache bash jq git gettext
+  script:
+    - |
+      git clone --depth 1 https://github.com/seanyeh/mini-log-view.git /tmp/mini-log-view
+      bash /tmp/mini-log-view/scripts/generate.sh "${LOG_DIRECTORY:-.}" public
+  artifacts:
+    paths:
+      - public
