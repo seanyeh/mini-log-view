@@ -5,7 +5,8 @@ author: 'sean'
 inputs:
   log-directory:
     description: 'Directory containing JSONL log files'
-    required: true
+    required: false
+    default: '.'
   output-directory:
     description: 'Directory to output the generated HTML site'
     required: false
