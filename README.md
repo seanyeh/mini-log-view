@@ -1,9 +1,10 @@
-# Mini Log View Generator
+# Mini Log View
 
-Generates a static HTML log viewer from JSONL files. Works with GitHub Actions and GitLab CI.
+Generate a simple static site to view log files (in JSONL format) in GitHub/GitLab Pages.
 
-## JSONL Format
+## Usage
 
+Create a repo and add your log files (named `*.jsonl`). Example log:
 ```jsonl
 {"timestamp": "2026-01-13T14:32:01-06:00", "status": "info", "message": "Server started"}
 {"timestamp": "2026-01-13T14:32:05-06:00", "status": "error", "message": "Database connection failed"}
@@ -11,10 +12,10 @@ Generates a static HTML log viewer from JSONL files. Works with GitHub Actions a
 
 Fields: `timestamp` (ISO 8601), `status` (info/error/warning/ok), `message`
 
-## GitHub Actions
+### GitHub Actions
 
 ```yaml
-name: Deploy Log Viewer
+name: Deploy
 on:
   push:
     branches: [main]
@@ -50,7 +51,7 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-## GitLab CI
+### GitLab CI
 
 ```yaml
 include:
